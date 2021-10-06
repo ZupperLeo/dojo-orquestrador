@@ -2,21 +2,15 @@ package br.com.zupacademy.orquestrador.kafka_producer.controller.dto;
 
 public class ClienteDTO {
 
-    private Long id;
     private String nome;
     private String email;
 
     public ClienteDTO(){
     }
 
-    public ClienteDTO(Long id, String nome, String email) {
-        this.id = id;
+    public ClienteDTO( String nome, String email) {
         this.nome = nome;
         this.email = email;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getNome() {

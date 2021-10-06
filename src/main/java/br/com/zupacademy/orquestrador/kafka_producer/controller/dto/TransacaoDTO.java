@@ -9,24 +9,22 @@ public class TransacaoDTO {
 
     private TipoOperacao tipo;
     private BigDecimal valor;
-    private LocalDateTime data;
+    private LocalDateTime data = LocalDateTime.now();
     private ContaDTO conta;
     private CelularDTO celular = null;
 
     public TransacaoDTO(){
     }
 
-    public TransacaoDTO(TipoOperacao tipo, BigDecimal valor, LocalDateTime data, ContaDTO conta) {
+    public TransacaoDTO(TipoOperacao tipo, BigDecimal valor, ContaDTO conta) {
         this.tipo = tipo;
         this.valor = valor;
-        this.data = data;
         this.conta = conta;
     }
 
-    public TransacaoDTO(TipoOperacao tipo, BigDecimal valor, LocalDateTime data, ContaDTO conta, CelularDTO celular) {
+    public TransacaoDTO(TipoOperacao tipo, BigDecimal valor, ContaDTO conta, CelularDTO celular) {
         this.tipo = tipo;
         this.valor = valor;
-        this.data = data;
         this.conta = conta;
         this.celular = celular;
     }

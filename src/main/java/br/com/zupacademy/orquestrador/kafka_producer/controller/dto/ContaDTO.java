@@ -1,32 +1,24 @@
 package br.com.zupacademy.orquestrador.kafka_producer.controller.dto;
 
-import java.math.BigDecimal;
-
 public class ContaDTO {
 
-    private Long id;
     private String numero;
-    private ClienteDTO cliente;
+    private ClienteDTO clienteDTO;
 
     public ContaDTO(){
     }
 
-    public ContaDTO(Long id, String numero, ClienteDTO cliente) {
-        this.id = id;
+    public ContaDTO( String numero, ClienteDTO cliente) {
         this.numero = numero;
-        this.cliente = cliente;
-    }
-
-    public Long getId() {
-        return id;
+        this.clienteDTO = cliente;
     }
 
     public String getNumero() {
         return numero;
     }
 
-    public ClienteDTO getCliente() {
-        return cliente;
+    public ClienteDTO getClienteDTO() {
+        return clienteDTO;
     }
 
 }
