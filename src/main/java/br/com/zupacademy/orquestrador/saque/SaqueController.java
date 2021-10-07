@@ -1,9 +1,10 @@
-package br.com.zupacademy.orquestrador.deposito;
+package br.com.zupacademy.orquestrador.saque;
 
 import br.com.zupacademy.orquestrador.deposito.dto.DepositaRequest;
 import br.com.zupacademy.orquestrador.kafka_producer.TransacoesProducer;
 import br.com.zupacademy.orquestrador.kafka_producer.controller.dto.ContaDTO;
 import br.com.zupacademy.orquestrador.kafka_producer.controller.dto.TransacaoDTO;
+import br.com.zupacademy.orquestrador.saque.dto.SaqueRequest;
 import br.com.zupacademy.orquestrador.shared.clients.ContaDigitalClient;
 import br.com.zupacademy.orquestrador.shared.enums.TipoOperacao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DepositoController {
+public class SaqueController {
 
     @Autowired
     private ContaDigitalClient client;
@@ -22,10 +23,10 @@ public class DepositoController {
     @Autowired
     private TransacoesProducer transacoesProducer;
 
-    @PostMapping("/contas/depositar")
-    public ResponseEntity<?> depositar( @RequestBody DepositaRequest request){
+    @PostMapping("/contas/sacar")
+    public ResponseEntity<?> depositar(@RequestBody SaqueRequest request){
 
-        ResponseEntity<?> response = client.depositar(request);
+        ResponseEntity<?> response = client.sacar(request);
         if(response.getStatusCode() != HttpStatus.OK){
             return response;
         }
@@ -34,7 +35,7 @@ public class DepositoController {
 
         TransacaoDTO transacaoDTO = new TransacaoDTO(
                 TipoOperacao.DEPOSITO,
-                request.getValorDeposito(),
+                request.getValorSaque(),
                 contaDTO);
 
         transacoesProducer.send(transacaoDTO);

@@ -2,6 +2,7 @@ package br.com.zupacademy.orquestrador.shared.clients;
 
 import br.com.zupacademy.orquestrador.deposito.dto.DepositaRequest;
 import br.com.zupacademy.orquestrador.kafka_producer.controller.dto.ContaDTO;
+import br.com.zupacademy.orquestrador.saque.dto.SaqueRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -14,5 +15,8 @@ public interface ContaDigitalClient {
 
     @PostMapping("/contas/depositar")
     public ResponseEntity<ContaDTO> depositar(@RequestBody DepositaRequest depositaRequest);
+
+    @PostMapping("/contas/sacar")
+    public ResponseEntity<ContaDTO> sacar(@RequestBody SaqueRequest saqueRequest);
 
 }
