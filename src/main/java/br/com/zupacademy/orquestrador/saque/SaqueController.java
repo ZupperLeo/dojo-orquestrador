@@ -34,7 +34,7 @@ public class SaqueController {
         ContaDTO contaDTO = (ContaDTO) response.getBody();
 
         TransacaoDTO transacaoDTO = new TransacaoDTO(
-                TipoOperacao.DEPOSITO,
+                TipoOperacao.SAQUE,
                 request.getValorSaque(),
                 contaDTO);
 
